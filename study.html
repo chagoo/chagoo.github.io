@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Words</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Study Words</h1>
+    <ul id="word-list"></ul>
+    <button id="back-to-menu">Back to Menu</button>
+
+    <script>
+        const words = JSON.parse(localStorage.getItem('selectedWordList')) || [];
+
+        const wordListContainer = document.getElementById('word-list');
+
+        // Function to display words
+        function displayWords(words) {
+            wordListContainer.innerHTML = '';
+            words.forEach(word => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<strong>${word.english}</strong> (${word.spanish}): ${word.definition}`;
+                wordListContainer.appendChild(listItem);
+            });
+        }
+
+        displayWords(words);
+
+        document.getElementById('back-to-menu').onclick = () => {
+            window.location.href = 'menu.html';
+        };
+    </script>
+</body>
+</html>

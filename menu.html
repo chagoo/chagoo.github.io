@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Matching Game Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Word Matching Game Menu</h1>
+
+    <!-- Dropdown to select the word list -->
+    <label for="word-list-select">Choose a word list:</label>
+    <select id="word-list-select">
+        <option value="list1">List 1</option>
+        <option value="list2">List 2</option>
+        <option value="list3">List 3</option>
+        <!-- Add more options for more lists if needed -->
+    </select>
+
+    <!-- Button to study words -->
+    <button id="study-words">Study Words</button>
+
+    <!-- Button to start the game -->
+    <button id="start-game">Start Game</button>
+
+    <!-- Links to play different challenges -->
+    <div id="challenge-links">
+        <a href="challenge1.html">Go to Challenge 1</a>
+        <a href="challenge2.html">Go to Challenge 2</a>
+        <a href="challenge3.html" id="challenge3-link">Go to Challenge 3</a> <!-- New Challenge link -->
+    </div>
+
+    <!-- Modal for word list (Study words) -->
+    <div id="word-list-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Study Words</h2>
+            <ul id="word-list"></ul>
+        </div>
+    </div>
+
+    <script src="menu.js"></script>
+</body>
+</html>

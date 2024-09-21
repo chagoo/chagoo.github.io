@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Matching Game - Challenge 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game">
+        <h1>Word Matching Game - Challenge 1 
+            <span id="word-counter">(0/0)</span> <!-- Counter placeholder -->
+        </h1>
+
+        <!-- Carousel container -->
+        <div id="carousel-container">
+            <button id="prev-btn">&lt;</button> <!-- Previous Button -->
+            <div id="carousel">
+                <!-- Word cards will be dynamically inserted here -->
+            </div>
+            <button id="next-btn">&gt;</button> <!-- Next Button -->
+        </div>
+
+        <div id="score">Score: 0</div>
+
+        <button id="check-answer">Check Answer</button>
+        <button id="reset-game">Reset Game</button>
+
+        <a href="menu.html" class="menu-button">Return to Menu</a>
+
+        <div id="feedback"></div>
+        <div id="definition-container"></div>
+        <div id="finish-message"></div>
+    </div>
+
+    <script src="challenge1.js"></script>
+</body>
+</html>
