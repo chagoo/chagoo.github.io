@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const words = ['awesome', 'loyal', 'voyage', 'bassoon', 'auction'];
+    const words = ['awesome'];
     let selectedWord;
     let guessedLetters = [];
     let lives = 6;
