@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { english: 'destroy', spanish: 'destruir' },
         { english: 'awkward', spanish: 'incómodo' }
     ];
-    
 
     let currentIndex = 0;
     const totalWords = words.length;
@@ -36,6 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
         wordCounter.innerText = `(${currentIndex + 1}/${totalWords})`;
     }
 
+    // Function to play the pronunciation using Web Speech API
+    function playPronunciation(text) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US'; // You can set the language here
+        speechSynthesis.speak(utterance);
+    }
+
     // Create the word cards and add them to the carousel
     words.forEach((word, index) => {
         const card = document.createElement('div');
@@ -43,11 +49,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index === 0) {
             card.classList.add('active');
         }
-        
+
         card.innerHTML = `
             <div class="word-large">${word.english}</div>
             <div class="word-small">${word.spanish}</div>
+            <button class="play-sound">🔊 Play Sound</button>
         `;
+
+        // Event listener to play sound on button click
+        card.querySelector('.play-sound').addEventListener('click', () => {
+            playPronunciation(word.english);
+        });
+
         carousel.appendChild(card);
     });
 
