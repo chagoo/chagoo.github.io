@@ -121,3 +121,46 @@ h1 {
 .center-button:hover {
     background-color: #555; /* Change color on hover */
 }
+
+
+
+
+
+.status-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.status-item {
+    font-size: 18px; /* Increase font size */
+    font-weight: bold;
+}
+
+.word-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.word-display {
+    font-size: 24px; /* Slightly larger for visibility */
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.input-field {
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 18px; /* Make input field text larger */
+    margin-bottom: 10px;
+}
+
+.feedback {
+    font-size: 16px; /* Adjust feedback size */
+    color: red; /* Make feedback text red for visibility */
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around; /* Space buttons evenly */
+}
