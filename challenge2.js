@@ -1,113 +1,128 @@
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Retrieve the selected word list from localStorage
-    const words = JSON.parse(localStorage.getItem('selectedWordList')) || [];
+    const words = [
+        { english: 'jewel', spanish: 'joya' },
+        { english: 'loyal', spanish: 'leal' },
+        { english: 'chowder', spanish: 'sopa espesa' },
+        { english: 'awesome', spanish: 'increíble' },
+        { english: 'cocoon', spanish: 'capullo' },
+        { english: 'hoist', spanish: 'izar' },
+        { english: 'applaud', spanish: 'aplaudir' },
+        { english: 'rejoice', spanish: 'regocijarse' },
+        { english: 'pronounce', spanish: 'pronunciar' },
+        { english: 'saucer', spanish: 'platillo' },
+        { english: 'soothe', spanish: 'calmar' },
+        { english: 'coupon', spanish: 'cupón' },
+        { english: 'caution', spanish: 'precaución' },
+        { english: 'bassoon', spanish: 'fagot' },
+        { english: 'auction', spanish: 'subasta' },
+        { english: 'voyage', spanish: 'viaje' },
+        { english: 'cougar', spanish: 'puma' },
+        { english: 'steward', spanish: 'mayordomo' },
+        { english: 'destroy', spanish: 'destruir' },
+        { english: 'awkward', spanish: 'incómodo' }
+    ];
 
-    const incompleteWordsContainer = document.getElementById('incomplete-words-container');
-    const challengeFeedback = document.getElementById('challenge-feedback');
-    const backToChallenge1Button = document.getElementById('back-to-challenge1');
-    const goToChallenge2Button = document.getElementById('go-to-challenge2');
-    const resetGameButton = document.getElementById('reset-game');
-    const scoreElement = document.getElementById('score');
+    let currentIndex = 0;
+    const totalWords = words.length;
 
-    const halfIndex = Math.ceil(words.length / 2);
-    let currentStage = 1;
-    let incompleteWords = [];
-    let correctAnswers = {};
-    let score = 0;
+    const carousel = document.getElementById('carousel');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const wordCounter = document.getElementById('word-counter'); 
+    const checkBtn = document.getElementById('check-answer');
+    const feedback = document.getElementById('feedback'); // For giving feedback
 
-    // Function to load words for a given stage
-    function loadWords(stage) {
-        incompleteWordsContainer.innerHTML = '';
-        challengeFeedback.innerText = '';
-
-        const wordsToDisplay = stage === 1 
-            ? words.slice(0, halfIndex) 
-            : words.slice(halfIndex);
-
-        // Generate incomplete words and store correct answers
-        incompleteWords = wordsToDisplay.map(wordObj => {
-            const incomplete = wordObj.english.split('').map((char, idx) => 
-                Math.random() > 0.5 ? '_' : char // Make about half the letters hidden
-            ).join('');
-            correctAnswers[incomplete] = wordObj.english;
-            return { incomplete, original: wordObj.english };
-        });
-
-        // Display incomplete words with input fields for the user
-        incompleteWords.forEach(wordObj => {
-            const wordDiv = document.createElement('div');
-            wordDiv.innerHTML = `
-                <label>${wordObj.incomplete}</label>
-                <input type="text" class="challenge-input" data-original="${wordObj.original}" placeholder="Complete the word">
-            `;
-            incompleteWordsContainer.appendChild(wordDiv);
-        });
-
-        // Show or hide buttons based on the current stage
-        goToChallenge2Button.style.display = stage === 1 ? 'block' : 'none';
+    // Function to update the word counter
+    function updateWordCounter() {
+        wordCounter.innerText = `(${currentIndex + 1}/${totalWords})`;
     }
 
-    // Function to check the user's answers
-    function checkAnswers() {
-        const inputs = document.querySelectorAll('.challenge-input');
-        let allCorrect = true;
+    // Function to play the pronunciation using Web Speech API
+    function playPronunciation(text) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US'; 
+        speechSynthesis.speak(utterance);
+    }
 
-        inputs.forEach(input => {
-            const userAnswer = input.value.trim();
-            const originalWord = input.dataset.original;
+    // Function to create an incomplete word by replacing random characters with '_'
+    function createIncompleteWord(word) {
+        return word.split('').map(char => (Math.random() > 0.5 ? '_' : char)).join('');
+    }
 
-            if (userAnswer === originalWord) {
-                input.style.backgroundColor = '#d4edda'; // Correct
-            } else {
-                input.style.backgroundColor = '#f8d7da'; // Incorrect
-                allCorrect = false;
-            }
-        });
-
-        // Update feedback based on the correctness of the answers
-        if (allCorrect) {
-            if (currentStage === 1) {
-                challengeFeedback.innerText = 'Great job! You completed the first part. Click below to start the second part.';
-                score += halfIndex; // Add score for completing the first part
-                updateScore();
-            } else {
-                challengeFeedback.innerText = 'Congratulations! You completed both challenges!';
-                score += words.length - halfIndex; // Add score for completing the second part
-                updateScore();
-            }
-        } else {
-            challengeFeedback.innerText = 'Some answers are incorrect. Try again!';
+    // Create the word cards and add them to the carousel
+    words.forEach((word, index) => {
+        const card = document.createElement('div');
+        card.classList.add('word-card');
+        if (index === 0) {
+            card.classList.add('active');
         }
+
+        const incompleteWord = createIncompleteWord(word.english); // Generate incomplete word
+
+        card.innerHTML = `
+            <div class="word-large">${incompleteWord}</div>
+            <div class="word-small">${word.spanish}</div>
+            <input type="text" class="word-input" placeholder="Complete the word">
+            <button class="play-sound">🔊 Play Sound</button>
+        `;
+
+        // Event listener to play sound on button click
+        card.querySelector('.play-sound').addEventListener('click', () => {
+            playPronunciation(word.english);
+        });
+
+        carousel.appendChild(card);
+    });
+
+    const cards = document.querySelectorAll('.word-card');
+
+    // Function to show the card at a given index
+    function showCard(index) {
+        cards.forEach((card, idx) => {
+            if (idx === index) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
+        });
+        updateWordCounter(); // Update the counter whenever a card is shown
+        feedback.innerText = ''; // Clear feedback on changing card
     }
 
-    // Function to update the score on the screen
-    function updateScore() {
-        scoreElement.innerText = `Score: ${score}`;
-    }
+    // Event listeners for carousel navigation
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = cards.length - 1; // Loop back to the last card
+        }
+        showCard(currentIndex);
+    });
 
-    // Function to reset the game
-    function resetGame() {
-        score = 0;
-        currentStage = 1;
-        updateScore();
-        loadWords(currentStage);
-    }
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < cards.length - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; // Loop back to the first card
+        }
+        showCard(currentIndex);
+    });
 
-    // Set up event listeners for the buttons
-    document.getElementById('check-challenge-answer').onclick = checkAnswers;
+    // Function to check the user's input
+    checkBtn.addEventListener('click', () => {
+        const currentCard = cards[currentIndex];
+        const userInput = currentCard.querySelector('.word-input').value.trim().toLowerCase();
+        const correctAnswer = words[currentIndex].english.toLowerCase();
 
-    backToChallenge1Button.onclick = () => {
-        window.location.href = 'index.html'; // Navigate back to the menu or challenge 1
-    };
+        if (userInput === correctAnswer) {
+            feedback.innerText = 'Correct! Great job!';
+            feedback.style.color = 'green';
+        } else {
+            feedback.innerText = 'Incorrect. Try again!';
+            feedback.style.color = 'red';
+        }
+    });
 
-    goToChallenge2Button.onclick = () => {
-        currentStage = 2;
-        loadWords(currentStage);
-    };
-
-    resetGameButton.onclick = resetGame;
-
-    // Initial call to load words for the first stage
-    loadWords(currentStage);
+    // Initialize the counter when the page loads
+    updateWordCounter();
 });
