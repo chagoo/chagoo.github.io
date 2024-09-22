@@ -1,6 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const words = JSON.parse(localStorage.getItem('selectedWordList')) || [];
-    const listName = localStorage.getItem('selectedWordListName') || "Unknown List"; // Get the name of the selected list
+    // Use the predefined word list instead of fetching from localStorage
+    const words = [
+        { english: 'jewel', spanish: 'joya' },
+        { english: 'loyal', spanish: 'leal' },
+        { english: 'chowder', spanish: 'sopa espesa' },
+        { english: 'awesome', spanish: 'increíble' },
+        { english: 'cocoon', spanish: 'capullo' },
+        { english: 'hoist', spanish: 'izar' },
+        { english: 'applaud', spanish: 'aplaudir' },
+        { english: 'rejoice', spanish: 'regocijarse' },
+        { english: 'pronounce', spanish: 'pronunciar' },
+        { english: 'saucer', spanish: 'platillo' },
+        { english: 'soothe', spanish: 'calmar' },
+        { english: 'coupon', spanish: 'cupón' },
+        { english: 'caution', spanish: 'precaución' },
+        { english: 'bassoon', spanish: 'fagot' },
+        { english: 'auction', spanish: 'subasta' },
+        { english: 'voyage', spanish: 'viaje' },
+        { english: 'cougar', spanish: 'puma' },
+        { english: 'steward', spanish: 'mayordomo' },
+        { english: 'destroy', spanish: 'destruir' },
+        { english: 'awkward', spanish: 'incómodo' }
+    ];
+
     const wordDisplay = document.getElementById('word-display');
     const translationInput = document.getElementById('translation-input');
     const timerElement = document.getElementById('timer');
@@ -19,9 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let timeLeft = 10;
     let timerInterval = null;
     let gameRunning = false;
-    let errors = 0; // Track the number of errors
+    let errors = 0;
 
-    // Display the list name and number of words
+    // Display the list name and number of words (hardcoded list)
+    const listName = "Challenge 3 Word List"; // Hardcoded list name for Challenge 3
     listInfo.innerHTML = `List: <strong>${listName}</strong> - Number of words: <strong>${words.length}</strong>`;
 
     function startGame() {
@@ -29,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gameRunning = true;
         score = 0;
         lives = 3;
-        errors = 0; // Reset errors
+        errors = 0;
         updateUI();
         loadNextWord();
         startTimer();
@@ -41,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         score = 0;
         lives = 3;
         timeLeft = 10;
-        errors = 0; // Reset errors
+        errors = 0;
         currentWord = null;
         translationInput.value = '';
         feedback.innerText = '';
@@ -57,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const randomIndex = Math.floor(Math.random() * words.length);
         currentWord = words[randomIndex];
-        wordDisplay.innerText = currentWord.english; // Display the word in English
+        wordDisplay.innerText = currentWord.spanish; // Display the word in Spanish
         translationInput.value = '';
         timeLeft = 10; // Reset the timer
     }
@@ -77,8 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function loseLife() {
         lives--;
         livesElement.innerText = `Lives: ${lives}`;
-        feedback.innerText = `Out of time! The correct translation was: ${currentWord.spanish}`;
-        errors++; // Increment errors for failing to answer in time
+        feedback.innerText = `Out of time! The correct translation was: ${currentWord.english}`; // Show correct English translation
+        errors++;
 
         if (lives <= 0) {
             feedback.innerText = 'Game over! You ran out of lives.';
@@ -90,9 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function checkTranslation() {
-        const userTranslation = translationInput.value.trim();
+        const userTranslation = translationInput.value.trim().toLowerCase();
 
-        if (userTranslation === currentWord.spanish) {
+        if (userTranslation === currentWord.english.toLowerCase()) {
             feedback.innerText = 'Correct!';
             score++;
             updateUI();
@@ -103,9 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function skipWord() {
-        feedback.innerText = `Skipped! The correct translation was: ${currentWord.spanish}`;
-        errors++; // Increment errors for skipping a word
-        loadNextWord(); // Load the next word
+        feedback.innerText = `Skipped! The correct translation was: ${currentWord.english}`;
+        errors++;
+        loadNextWord();
         updateUI();
     }
 
@@ -130,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     startButton.addEventListener('click', startGame);
 
     // Handle skipping the current word
-    nextWordButton.addEventListener('click', skipWord); // New functionality for skipping
+    nextWordButton.addEventListener('click', skipWord);
 
     // Handle returning to the menu
     returnButton.addEventListener('click', () => {

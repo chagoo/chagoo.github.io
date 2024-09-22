@@ -4,28 +4,36 @@
     justify-content: center;
     margin-top: 20px;
     position: relative;
+    width: 100%; /* Ensure the container uses full width */
+    max-width: 600px; /* Optional: set a max width */
+    margin: 0 auto; /* Center the carousel container */
 }
 
 #carousel {
     display: flex;
     overflow: hidden;
-    width: 300px;
+    width: 300px; /* Optional: adjust width if necessary */
     height: 200px;
     background-color: #f5f5f5;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add shadow for better look */
+    position: relative;
 }
 
 .word-card {
-    display: none;
+    display: none; /* Initially hide all word cards */
     flex-shrink: 0;
     width: 100%;
     text-align: center;
+    transition: opacity 0.3s ease; /* Smooth transition between word cards */
 }
 
 .word-card.active {
-    display: block;
+    display: block; /* Show active card */
+    opacity: 1; /* Ensure it's fully visible */
 }
 
 #prev-btn, #next-btn {
@@ -35,24 +43,81 @@
     font-size: 24px;
     padding: 10px;
     cursor: pointer;
+    border-radius: 50%; /* Circular button shape */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+#prev-btn:hover, #next-btn:hover {
+    background-color: #555; /* Darker color on hover */
 }
 
 #prev-btn {
     position: absolute;
-    left: 10px;
+    left: -60px; /* Moves button out from carousel edge */
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #next-btn {
     position: absolute;
-    right: 10px;
+    right: -60px; /* Moves button out from carousel edge */
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .word-large {
     font-size: 36px;
     font-weight: bold;
+    color: #333; /* Slightly darker font color */
 }
 
 .word-small {
     font-size: 20px;
     color: gray;
+}
+
+#word-counter {
+    font-size: 18px;
+    color: #666;
+    margin-top: 10px;
+    text-align: center;
+    display: block;
+}
+/* Center the title and counter */
+h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Ensure the entire game container is centered */
+#game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure the content takes the full height of the viewport */
+}
+
+/* Style for the Return to Menu button */
+.center-button {
+    margin-top: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.center-button:hover {
+    background-color: #555; /* Change color on hover */
 }
