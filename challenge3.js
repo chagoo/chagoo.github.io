@@ -44,8 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let errors = 0;
 
     // Display the list name and number of words (hardcoded list)
-    const listName = "Challenge 3 Word List"; // Hardcoded list name for Challenge 3
-    listInfo.innerHTML = `List: <strong>${listName}</strong> - Number of words: <strong>${words.length}</strong>`;
+    const listName = "-"; // Hardcoded list name for Challenge 3
+    listInfo.innerHTML = `List: <strong>${listName}</strong> Number of words: <strong>${words.length}</strong>`;
 
     function startGame() {
         if (gameRunning) return; // Prevent starting game again if already running
