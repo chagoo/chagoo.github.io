@@ -1,25 +1,27 @@
-/* Ensure the entire page centers the menu container */
+/* Add background image to the body */
 body {
+    background-image: url('6373093.jpg');
+    background-size: cover; /* Makes the image cover the whole screen */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 100vh; /* Ensures the body takes full viewport height */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     margin: 0;
-    background-color: #f0f0f0; /* Optional: light gray background */
-    font-family: Arial, sans-serif;
 }
 
-/* Style for the menu container */
+/* Keep the existing menu container styling */
 #menu-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #333; /* Dark background to mimic Tetris blocks */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Optional: subtle shadow */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     color: white;
-    width: 300px; /* Set a fixed width to resemble a Tetris piece */
+    width: 300px;
     text-align: center;
 }
 
@@ -29,7 +31,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Style for the dropdown and buttons */
+/* Dropdown and buttons styles */
 label, select, button {
     font-size: 16px;
     margin-bottom: 15px;
@@ -39,7 +41,7 @@ label, select, button {
     border-radius: 5px;
 }
 
-/* Styling the buttons to look like Tetris blocks */
+/* Tetris-like buttons */
 button {
     background-color: #555;
     color: white;
@@ -47,18 +49,11 @@ button {
     transition: background-color 0.3s ease;
 }
 
-/* Hover effect for buttons */
 button:hover {
     background-color: #777;
 }
 
-/* Center and style the challenge links */
-#challenge-links {
-    margin-top: 20px;
-    width: 100%;
-    text-align: center;
-}
-
+/* Challenge links */
 #challenge-links a {
     display: block;
     padding: 10px;
@@ -70,23 +65,6 @@ button:hover {
     transition: background-color 0.3s;
 }
 
-/* Hover effect for links */
 #challenge-links a:hover {
     background-color: #666;
-}
-
-/* Optional modal styling */
-.modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.modal-content {
-    text-align: center;
 }
