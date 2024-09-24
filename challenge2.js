@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('next-btn');
     const wordCounter = document.getElementById('word-counter'); 
     const checkBtn = document.getElementById('check-answer');
-    const helpBtn = document.getElementById('help-button'); // Ensure this button exists in HTML
+    const helpBtn = document.getElementById('help-btn'); // Ensure this button ID matches HTML
     const feedback = document.getElementById('feedback'); // For giving feedback
 
     // Function to update the word counter
