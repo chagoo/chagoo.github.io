@@ -1,27 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Use the predefined word list instead of fetching from localStorage
-    const words = [
-        { english: 'jewel', spanish: 'joya' },
-        { english: 'loyal', spanish: 'leal' },
-        { english: 'chowder', spanish: 'sopa espesa' },
-        { english: 'awesome', spanish: 'increíble' },
-        { english: 'cocoon', spanish: 'capullo' },
-        { english: 'hoist', spanish: 'izar' },
-        { english: 'applaud', spanish: 'aplaudir' },
-        { english: 'rejoice', spanish: 'regocijarse' },
-        { english: 'pronounce', spanish: 'pronunciar' },
-        { english: 'saucer', spanish: 'platillo' },
-        { english: 'soothe', spanish: 'calmar' },
-        { english: 'coupon', spanish: 'cupón' },
-        { english: 'caution', spanish: 'precaución' },
-        { english: 'bassoon', spanish: 'fagot' },
-        { english: 'auction', spanish: 'subasta' },
-        { english: 'voyage', spanish: 'viaje' },
-        { english: 'cougar', spanish: 'puma' },
-        { english: 'steward', spanish: 'mayordomo' },
-        { english: 'destroy', spanish: 'destruir' },
-        { english: 'awkward', spanish: 'incómodo' }
-    ];
+    let words = []; // This will hold the fetched word list
+    let currentWord = null;
+    let score = 0;
+    let lives = 3;
+    let timeLeft = 10;
+    let timerInterval = null;
+    let gameRunning = false;
+    let errors = 0;
 
     const wordDisplay = document.getElementById('word-display');
     const translationInput = document.getElementById('translation-input');
@@ -35,20 +20,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const listInfo = document.getElementById('list-info');
     const returnButton = document.getElementById('return-to-menu');
 
-    let currentWord = null;
-    let score = 0;
-    let lives = 3;
-    let timeLeft = 10;
-    let timerInterval = null;
-    let gameRunning = false;
-    let errors = 0;
-
-    // Display the list name and number of words (hardcoded list)
+    // Display the list name and number of words (initially empty)
     const listName = "-"; // Hardcoded list name for Challenge 3
-    listInfo.innerHTML = `List: <strong>${listName}</strong> Number of words: <strong>${words.length}</strong>`;
+    listInfo.innerHTML = `List: <strong>${listName}</strong> Number of words: <strong>0</strong>`;
+
+    // Fetch word list from JSON file
+    fetch('words.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            words = data;
+            listInfo.innerHTML = `List: <strong>${listName}</strong> Number of words: <strong>${words.length}</strong>`;
+        })
+        .catch(error => {
+            console.error('Error loading word list:', error);
+            feedback.innerText = 'Error loading words. Please try again later.';
+        });
 
     function startGame() {
-        if (gameRunning) return; // Prevent starting game again if already running
+        if (gameRunning || words.length === 0) return; // Prevent starting game again if already running or if no words
         gameRunning = true;
         score = 0;
         lives = 3;
