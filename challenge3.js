@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let words = []; // This will hold the fetched word list
     let currentWord = null;
     let score = 0;
-    let lives = 3;
-    let timeLeft = 10;
+    let lives = 5;
+    let timeLeft = 25;
     let timerInterval = null;
     let gameRunning = false;
     let errors = 0;
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (gameRunning || words.length === 0) return; // Prevent starting game again if already running or if no words
         gameRunning = true;
         score = 0;
-        lives = 3;
+        lives = 5;
         errors = 0;
         updateUI();
         loadNextWord();
@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(timerInterval); // Stop any existing timers
         gameRunning = false;
         score = 0;
-        lives = 3;
-        timeLeft = 10;
+        lives = 5;
+        timeLeft = 25;
         errors = 0;
         currentWord = null;
         translationInput.value = '';
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentWord = words[randomIndex];
         wordDisplay.innerText = currentWord.spanish; // Display the word in Spanish
         translationInput.value = '';
-        timeLeft = 10; // Reset the timer
+        timeLeft = 25; // Reset the timer
     }
 
     function startTimer() {
