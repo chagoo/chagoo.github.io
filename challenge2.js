@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const carousel = document.getElementById('carousel');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
-    const wordCounter = document.getElementById('word-counter');
+    const wordCounter = document.getElementById('word-counter'); 
     const checkBtn = document.getElementById('check-answer');
-    const helpBtn = document.getElementById('help-btn'); // Help button
+    const helpBtn = document.getElementById('help-button'); // Ensure this button exists in HTML
     const feedback = document.getElementById('feedback'); // For giving feedback
 
     // Function to update the word counter
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to play the pronunciation using Web Speech API
     function playPronunciation(text) {
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'en-US';
+        utterance.lang = 'en-US'; 
         speechSynthesis.speak(utterance);
     }
 
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateWordCounter();
     }
 
-    // Fetch word list from words.json
+    // Fetch word list from JSON file
     fetch('words.json')
         .then(response => {
             if (!response.ok) {
@@ -123,7 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json();
         })
         .then(data => {
-            words = data; // Save words to the array
+            console.log('Words loaded:', data); // Check if words are loaded
+            words = data;
             createWordCards(); // Create word cards after the data is loaded
         })
         .catch(error => console.error('Error loading word list:', error));
