@@ -1,6 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const wordLists = {
 
+        list5: [
+            { english: 'Furnish', spanish: 'amueblar', definition: 'They plan to furnish the house with modern furniture. (Planean amueblar la casa con muebles modernos.)' },
+            { english: 'Cashier', spanish: 'cajero', definition: 'The cashier handed me the receipt after I paid. (El cajero me entregó el recibo después de pagar.)' },
+            { english: 'Purpose', spanish: 'propósito', definition: 'Her purpose in life is to help others. (Su propósito en la vida es ayudar a los demás.)' },
+            { english: 'Alert', spanish: 'alerta', definition: 'The police issued an alert for the missing person. (La policía emitió una alerta por la persona desaparecida.)' },
+            { english: 'Volunteer', spanish: 'voluntario', definition: 'I decided to volunteer at the animal shelter. (Decidí ser voluntario en el refugio de animales.)' },
+            { english: 'Frontier', spanish: 'frontera', definition: 'They crossed the frontier between the two countries. (Cruzaron la frontera entre los dos países.)' }
+        ],
+        
         list4: [
             { english: 'Jewel', spanish: 'joya', definition: 'She wore a beautiful jewel around her neck. (Ella llevaba una hermosa joya en su cuello.)' },
             { english: 'Loyal', spanish: 'leal', definition: 'My dog is very loyal and always stays by my side. (Mi perro es muy leal y siempre está a mi lado.)' },
