@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let words = [];
     let currentWord = null;
-    
+
     const spanishWordElem = document.getElementById('spanish-word');
     const guessInput = document.getElementById('guess-input');
     const feedback = document.getElementById('feedback');
@@ -10,12 +10,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch word list from JSON file
     fetch('words.json')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             words = data;
             loadNewWord();
         })
-        .catch(error => console.error('Error loading word list:', error));
+        .catch(error => {
+            console.error('Error loading word list:', error);
+            // Display error message to the user
+            spanishWordElem.innerText = 'Error loading words. Please try again later.';
+            feedback.innerText = 'We encountered a problem loading the word list.';
+            feedback.style.color = 'red';
+            // Optionally, disable the submit button if no words are available
+            submitButton.disabled = true;
+        });
 
     // Load a new word
     function loadNewWord() {
@@ -25,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             spanishWordElem.innerText = currentWord.spanish;
             feedback.innerText = '';
             guessInput.value = '';
+            submitButton.disabled = false;  // Re-enable the button in case it was disabled
         }
     }
 
