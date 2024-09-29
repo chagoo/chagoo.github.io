@@ -94,17 +94,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch word list from JSON file
     fetch('words.json')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Words loaded:', data); // Check if words are loaded
-        words = data;
-        createWordCards();
-    })
-    .catch(error => console.error('Error loading word list:', error));
-
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Words loaded:', data); // Check if words are loaded
+            words = data;
+            createWordCards();
+        })
+        .catch(error => console.error('Error loading word list:', error));
 });
