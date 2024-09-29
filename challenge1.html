@@ -1,109 +1,35 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const carousel = document.getElementById('carousel');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const wordCounter = document.getElementById('word-counter');
-    let currentIndex = 0;
-    let words = []; // This will hold the fetched word list
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word - Challenge 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game">
+        <h1>Word Game - Challenge 1 
+            <span id="word-counter">(0/0)</span> <!-- Counter placeholder -->
+        </h1>
 
-    // Function to update the word counter
-    function updateWordCounter() {
-        wordCounter.innerText = `(${currentIndex + 1}/${words.length})`;
-    }
+        <!-- Carousel container -->
+        <div id="carousel-container">
+            <button id="prev-btn">&lt;</button> <!-- Previous Button -->
+            <div id="carousel">
+                <!-- Word cards will be dynamically inserted here -->
+            </div>
+            <button id="next-btn">&gt;</button> <!-- Next Button -->
+        </div>
 
-    // Function to play pronunciation using Web Speech API
-    function playPronunciation(text) {
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'en-US';
-        speechSynthesis.speak(utterance);
-    }
+        <!--div id="score">Score: 0</div-->
 
-    // Function to play spelling using Web Speech API
-    function playSpelling(text) {
-        const spelledText = text.split('').join(' '); // Split the word into letters with spaces
-        const utterance = new SpeechSynthesisUtterance(spelledText);
-        utterance.lang = 'en-US';
-        speechSynthesis.speak(utterance);
-    }
+        <a href="menu.html" class="menu-button center-button">Return to Menu</a>
 
-    // Function to create word cards and add them to the carousel
-    function createWordCards() {
-        words.forEach((word, index) => {
-            const card = document.createElement('div');
-            card.classList.add('word-card');
-            if (index === 0) {
-                card.classList.add('active');
-            }
+        <div id="feedback"></div>
+        <div id="definition-container"></div>
+        <div id="finish-message"></div>
+    </div>
 
-            card.innerHTML = `
-                <div class="word-large">${word.english}</div>
-                <div class="word-small">${word.spanish}</div>
-                <button class="play-sound">🔊 Play Sound</button>
-                <button class="spell-word">🔡 Spell Word</button>
-            `;
-
-            // Event listener to play pronunciation on button click
-            card.querySelector('.play-sound').addEventListener('click', () => {
-                playPronunciation(word.english);
-            });
-
-            // Event listener to play spelling on button click
-            card.querySelector('.spell-word').addEventListener('click', () => {
-                playSpelling(word.english);
-            });
-
-            carousel.appendChild(card);
-        });
-
-        const cards = document.querySelectorAll('.word-card');
-
-        // Function to show the card at a given index
-        function showCard(index) {
-            cards.forEach((card, idx) => {
-                if (idx === index) {
-                    card.classList.add('active');
-                } else {
-                    card.classList.remove('active');
-                }
-            });
-            updateWordCounter();
-        }
-
-        // Event listeners for carousel navigation
-        prevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-            } else {
-                currentIndex = cards.length - 1;
-            }
-            showCard(currentIndex);
-        });
-
-        nextBtn.addEventListener('click', () => {
-            if (currentIndex < cards.length - 1) {
-                currentIndex++;
-            } else {
-                currentIndex = 0;
-            }
-            showCard(currentIndex);
-        });
-
-        // Initialize the counter
-        updateWordCounter();
-    }
-
-    // Fetch word list from JSON file
-    fetch('words.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Words loaded:', data); // Check if words are loaded
-            words = data;
-            createWordCards();
-        })
-        .catch(error => console.error('Error loading word list:', error));
-});
+    <script src="challenge1.js"></script>
+</body>
+</html>
