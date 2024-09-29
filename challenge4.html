@@ -8,22 +8,28 @@
 </head>
 <body>
     <div id="game">
-        <h1>Word Game - Challenge 4: Memory Matching</h1>
+        <h1>Word Game - Challenge 4</h1>
+        <!-- Word Guessing Game -->
+        <p id="instruction">Guess the English word based on the given Spanish word:</p>
+        
+        <!-- Spanish word to guess -->
+        <div id="spanish-word"></div>
 
-        <!-- Game board for Memory Matching -->
-        <div id="memory-game">
-            <div id="game-board"></div>
-            <button id="reset-game" class="menu-button center-button">Reset Game</button>
-            <div id="feedback"></div>
-        </div>
+        <!-- User input for the guessed English word -->
+        <input type="text" id="guess-input" placeholder="Enter English word" />
+        
+        <!-- Submit button -->
+        <button id="submit-guess">Submit Guess</button>
 
-        <!-- Button to return to menu -->
-        <div class="button-container">
-            <a href="menu.html" class="menu-button center-button">Return to Menu</a>
-        </div>
+        <!-- Feedback Section -->
+        <div id="feedback"></div>
+        
+        <!-- Reset Game -->
+        <button id="reset-game" class="menu-button">Reset Game</button>
+        <a href="menu.html" class="menu-button">Return to Menu</a>
     </div>
 
-    <!-- Include the JavaScript for Challenge 4 -->
+    <!-- Include the JS for this challenge -->
     <script src="challenge4.js"></script>
 </body>
 </html>
