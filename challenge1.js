@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const spelledText = text.split('').join(' '); // Split the word into letters with spaces
         const utterance = new SpeechSynthesisUtterance(spelledText);
         utterance.lang = 'en-US';
+        utterance.rate = 0.7; // Set rate to slow down the speech (0.7 is slower than default)
         speechSynthesis.speak(utterance);
     }
 
