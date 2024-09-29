@@ -18,6 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
         speechSynthesis.speak(utterance);
     }
 
+    // Function to play spelling using Web Speech API
+    function playSpelling(text) {
+        const spelledText = text.split('').join(' '); // Split the word into letters with spaces
+        const utterance = new SpeechSynthesisUtterance(spelledText);
+        utterance.lang = 'en-US';
+        speechSynthesis.speak(utterance);
+    }
+
     // Function to create word cards and add them to the carousel
     function createWordCards() {
         words.forEach((word, index) => {
@@ -31,11 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="word-large">${word.english}</div>
                 <div class="word-small">${word.spanish}</div>
                 <button class="play-sound">🔊 Play Sound</button>
+                <button class="spell-word">🔡 Spell Word</button>
             `;
 
-            // Event listener to play sound on button click
+            // Event listener to play pronunciation on button click
             card.querySelector('.play-sound').addEventListener('click', () => {
                 playPronunciation(word.english);
+            });
+
+            // Event listener to play spelling on button click
+            card.querySelector('.spell-word').addEventListener('click', () => {
+                playSpelling(word.english);
             });
 
             carousel.appendChild(card);
@@ -80,17 +94,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch word list from JSON file
     fetch('words.json')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Words loaded:', data); // Check if words are loaded
-        words = data;
-        createWordCards();
-    })
-    .catch(error => console.error('Error loading word list:', error));
-
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Words loaded:', data); // Check if words are loaded
+            words = data;
+            createWordCards();
+        })
+        .catch(error => console.error('Error loading word list:', error));
 });
