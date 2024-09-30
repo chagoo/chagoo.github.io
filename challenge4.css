@@ -1,52 +1,189 @@
-#game-board {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+/* Carousel container */
+#carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    width: 100%;
     max-width: 600px;
     margin: 0 auto;
 }
 
-.card {
-    width: 100px;
-    height: 100px;
-    background-color: #ddd;
+#carousel {
     display: flex;
+    overflow: hidden;
+    width: 300px;
+    height: 200px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
-    cursor: pointer;
-    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
-.card.flip {
-    background-color: #4caf50;
-    color: white;
-}
-
-.card.matched {
-    background-color: #2196f3;
-    pointer-events: none;
-}
-
-#feedback {
+.word-card {
+    display: none;
+    flex-shrink: 0;
+    width: 100%;
     text-align: center;
-    margin-top: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.word-card.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Navigation buttons */
+#prev-btn, #next-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+#prev-btn:hover, #next-btn:hover {
+    background-color: #555;
+}
+
+#prev-btn {
+    position: absolute;
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#next-btn {
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Word styles */
+.word-large {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+}
+
+.word-small {
+    font-size: 20px;
+    color: gray;
+}
+
+#word-counter {
     font-size: 18px;
-    color: green;
+    color: #666;
+    margin-top: 10px;
+    text-align: center;
+    display: block;
+}
+
+/* Title styling */
+h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Center the entire game */
+#game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Return to Menu button */
+.center-button {
+    margin-top: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.center-button:hover {
+    background-color: #555;
+}
+
+/* Status and word container */
+.status-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.status-item {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.word-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.word-display {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.input-field {
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Feedback */
+.feedback {
+    font-size: 16px;
+    color: red;
+}
+
+/* Button container */
+.button-container {
+    display: flex;
+    justify-content: space-around;
 }
 
 .menu-button {
-    background-color: green;
+    background-color: #333;
     color: white;
+    padding: 10px 15px;
     border: none;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 16px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 16px;
 }
 
-.menu-button:disabled {
-    background-color: gray;
-    cursor: not-allowed;
+.menu-button:hover {
+    background-color: #555;
+}
+
+/* Pronunciation feedback: Default green changes to red on button click */
+.pronunciation-button:active {
+    background-color: red;
+    transition: background-color 0.3s ease;
 }
