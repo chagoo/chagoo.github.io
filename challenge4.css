@@ -1,63 +1,52 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    text-align: center;
-    padding: 20px;
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-#game {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    display: inline-block;
-    width: 300px;
-}
-
-h1 {
+.card {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 24px;
-}
-
-#instruction {
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
-#spanish-word {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-#guess-input {
-    padding: 10px;
-    font-size: 16px;
-    width: 80%;
-    margin-bottom: 20px;
-}
-
-#submit-guess {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
+    border-radius: 8px;
+}
+
+.card.flip {
+    background-color: #4caf50;
+    color: white;
+}
+
+.card.matched {
+    background-color: #2196f3;
+    pointer-events: none;
 }
 
 #feedback {
+    text-align: center;
     margin-top: 20px;
-    font-size: 16px;
+    font-size: 18px;
+    color: green;
 }
 
 .menu-button {
-    padding: 10px;
-    background-color: #3498db;
+    background-color: green;
     color: white;
-    text-decoration: none;
     border: none;
-    border-radius: 5px;
-    margin-top: 20px;
-    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
 }

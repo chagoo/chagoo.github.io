@@ -46,6 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
         recognition.interimResults = false; // Only return final results
         recognition.maxAlternatives = 1;
 
+        recognition.onstart = () => {
+            // Change button color to red when waiting for pronunciation
+            submitButton.style.backgroundColor = 'red';
+        };
+
         recognition.onresult = function(event) {
             const userSpokenWord = event.results[0][0].transcript.toLowerCase();
             callback(userSpokenWord);
@@ -55,6 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error recognizing speech:', event.error);
             feedback.innerText = 'Error recognizing speech. Please try again.';
             feedback.style.color = 'red';
+            // Change button color back to green after error
+            submitButton.style.backgroundColor = 'green';
+        };
+
+        recognition.onend = function() {
+            // Change button color back to green after speech is processed
+            submitButton.style.backgroundColor = 'green';
         };
 
         recognition.start(); // Start the speech recognition
