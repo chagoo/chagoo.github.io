@@ -2,12 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const wordLists = {
 
         list5: [
-            { english: 'Furnish', spanish: 'amueblar', definition: 'They plan to furnish the house with modern furniture. (Planean amueblar la casa con muebles modernos.)' },
-            { english: 'Cashier', spanish: 'cajero', definition: 'The cashier handed me the receipt after I paid. (El cajero me entregó el recibo después de pagar.)' },
-            { english: 'Purpose', spanish: 'propósito', definition: 'Her purpose in life is to help others. (Su propósito en la vida es ayudar a los demás.)' },
-            { english: 'Alert', spanish: 'alerta', definition: 'The police issued an alert for the missing person. (La policía emitió una alerta por la persona desaparecida.)' },
-            { english: 'Volunteer', spanish: 'voluntario', definition: 'I decided to volunteer at the animal shelter. (Decidí ser voluntario en el refugio de animales.)' },
-            { english: 'Frontier', spanish: 'frontera', definition: 'They crossed the frontier between the two countries. (Cruzaron la frontera entre los dos países.)' }
+            { english: 'Jewel', spanish: 'joya', definition: 'an ornament of precious metal; gem)' },
+            { english: 'Loyal', spanish: 'leal', definition: 'faithful)' },
+            { english: 'Pronounce', spanish: 'pronunciar', definition: 'to declare)' },
+            { english: 'Purpose', spanish: 'propósito', definition: 'The result one hopes for in doing or making something; goal)' },
+            { english: 'Murmur', spanish: 'murmurar', definition: 'a low, soft, continuing sound)' },
+            { english: 'Virtue', spanish: 'virtud', definition: 'excellence in discerning right from wron and choosing to do right)' },
+            { english: 'Herbal', spanish: 'herbal', definition: 'made of herbs)' },
+            { english: 'Cashier', spanish: 'cajero', definition: 'an exployee who manages monetary transactions)' }
         ],
         
         list4: [
