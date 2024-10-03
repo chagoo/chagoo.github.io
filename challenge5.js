@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // The 'words' array will now come from the external words.js file
     let shuffledCards = [];
     let firstCard = null;
     let secondCard = null;
@@ -8,6 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameBoard = document.getElementById('game-board');
     const attemptsCount = document.getElementById('attempts-count');
     const restartButton = document.getElementById('restart-game');
+
+    // Function to fetch and use words from words.json
+    function fetchWords() {
+        fetch('words.json') // Fetch the words from words.json
+            .then(response => response.json())
+            .then(words => {
+                setupBoard(words); // Pass the fetched words to setupBoard
+            })
+            .catch(error => console.error('Error fetching words:', error));
+    }
 
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -26,11 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return card;
     }
 
-    function setupBoard() {
+    function setupBoard(words) {
         gameBoard.innerHTML = ''; // Clear the board
         shuffledCards = [];
 
-        // Add both English and Spanish versions of each word from the external 'words' array
+        // Add both English and Spanish versions of each word
         words.forEach(word => {
             shuffledCards.push({ language: 'english', word: word.english, pair: word.spanish });
             shuffledCards.push({ language: 'spanish', word: word.spanish, pair: word.english });
@@ -49,35 +58,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function flipCard() {
-        // Ignore click if two cards are already flipped
         if (firstCard && secondCard) return;
 
-        // Add 'flipped' class to this card
         this.classList.add('flipped');
 
-        // If it's the first card, store it
         if (!firstCard) {
             firstCard = this;
         } else if (this !== firstCard) {
-            // If it's the second card, store it and check for match
             secondCard = this;
             checkForMatch();
         }
     }
 
     function checkForMatch() {
-        // Ensure one card is in English and the other is in Spanish
         if (
             (firstCard.dataset.language === 'english' && secondCard.dataset.language === 'spanish') ||
             (firstCard.dataset.language === 'spanish' && secondCard.dataset.language === 'english')
         ) {
-            // Check if the word on one card matches the translation (pair) on the other
             if (firstCard.dataset.pair === secondCard.innerText || secondCard.dataset.pair === firstCard.innerText) {
                 firstCard.classList.add('matched');
                 secondCard.classList.add('matched');
                 resetCards();
             } else {
-                // No match: Flip the cards back after 1 second
                 setTimeout(() => {
                     firstCard.classList.remove('flipped');
                     secondCard.classList.remove('flipped');
@@ -85,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 1000);
             }
         } else {
-            // Not a valid English-Spanish pair: Flip back immediately
             setTimeout(() => {
                 firstCard.classList.remove('flipped');
                 secondCard.classList.remove('flipped');
@@ -105,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         attemptsCount.innerText = attempts;
     }
 
-    // Set up the game board when the page loads
-    restartButton.addEventListener('click', setupBoard);
-    setupBoard();
+    // Fetch the words and set up the game board when the page loads
+    restartButton.addEventListener('click', fetchWords);
+    fetchWords(); // Fetch words initially
 });
