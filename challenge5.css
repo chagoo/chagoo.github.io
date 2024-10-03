@@ -1,0 +1,70 @@
+/* Basic styles for the game container */
+#game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* Style for the game board (grid of cards) */
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-gap: 15px;
+    margin-top: 20px;
+}
+
+/* Card styles */
+.card {
+    width: 100px;
+    height: 100px;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    position: relative;
+    backface-visibility: hidden;
+}
+
+/* Card when flipped */
+.card.flipped {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Hidden matched cards */
+.card.matched {
+    visibility: hidden;
+}
+
+/* Status area */
+#status {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Buttons */
+.menu-button {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu-button:hover {
+    background-color: #555;
+}
