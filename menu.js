@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const wordLists = {
-
+        list6: [  // New word list
+            { english: "sparrow", spanish: "gorrión", definition: "a small bird" },
+            { english: "cherish", spanish: "apreciar", definition: "to value or care for deeply" },
+            { english: "cherry", spanish: "cereza", definition: "a small, round, red fruit" },
+            { english: "aware", spanish: "consciente", definition: "having knowledge or awareness" },
+            { english: "armor", spanish: "armadura", definition: "protective covering worn in battle" },
+            { english: "narrate", spanish: "narrar", definition: "to tell a story" }
+        ],
+        
         list5: [
             { english: 'Jewel', spanish: 'joya', definition: 'an ornament of precious metal; gem)' },
             { english: 'Loyal', spanish: 'leal', definition: 'faithful)' },
@@ -8,8 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { english: 'Purpose', spanish: 'propósito', definition: 'The result one hopes for in doing or making something; goal)' },
             { english: 'Murmur', spanish: 'murmurar', definition: 'a low, soft, continuing sound)' },
             { english: 'Virtue', spanish: 'virtud', definition: 'excellence in discerning right from wron and choosing to do right)' },
-            { english: 'Herbal', spanish: 'herbal', definition: 'made of herbs)' },
-            { english: 'Cashier', spanish: 'cajero', definition: 'an exployee who manages monetary transactions)' }
+            { english: 'Herbal', spanish: 'herbal', definition: 'made of herbs)' }
         ],
         
         list4: [
