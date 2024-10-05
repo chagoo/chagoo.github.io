@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => { 
     let shuffledCards = [];
     let firstCard = null;
     let secondCard = null;
@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to fetch and use words from words.json
     function fetchWords() {
-        fetch('words.json') // Fetch the words from words.json
+        fetch('words.json')
             .then(response => response.json())
             .then(words => {
-                setupBoard(words); // Pass the fetched words to setupBoard
+                setupBoard(words);
             })
             .catch(error => console.error('Error fetching words:', error));
     }
@@ -28,26 +28,24 @@ document.addEventListener('DOMContentLoaded', () => {
     function createCard(word, language, pair) {
         const card = document.createElement('div');
         card.classList.add('card');
-        card.innerText = word; // Show the word (English or Spanish)
-        card.dataset.language = language; // Store the language (English or Spanish)
-        card.dataset.pair = pair; // Store the corresponding translation
+        card.innerText = word;
+        card.dataset.language = language;
+        card.dataset.pair = pair;
         card.addEventListener('click', flipCard);
         return card;
     }
 
     function setupBoard(words) {
-        gameBoard.innerHTML = ''; // Clear the board
+        gameBoard.innerHTML = '';
         shuffledCards = [];
 
-        // Add both English and Spanish versions of each word
         words.forEach(word => {
             shuffledCards.push({ language: 'english', word: word.english, pair: word.spanish });
             shuffledCards.push({ language: 'spanish', word: word.spanish, pair: word.english });
         });
 
-        shuffle(shuffledCards); // Shuffle the cards
+        shuffle(shuffledCards);
 
-        // Create and append card elements to the game board
         shuffledCards.forEach(cardData => {
             const card = createCard(cardData.word, cardData.language, cardData.pair);
             gameBoard.appendChild(card);
@@ -76,9 +74,16 @@ document.addEventListener('DOMContentLoaded', () => {
             (firstCard.dataset.language === 'spanish' && secondCard.dataset.language === 'english')
         ) {
             if (firstCard.dataset.pair === secondCard.innerText || secondCard.dataset.pair === firstCard.innerText) {
+                // Apply explosion effect on both cards when matched
                 firstCard.classList.add('matched');
                 secondCard.classList.add('matched');
-                resetCards();
+                
+                // Remove the cards from the board after the animation
+                setTimeout(() => {
+                    firstCard.remove();
+                    secondCard.remove();
+                    resetCards();
+                }, 1000);
             } else {
                 setTimeout(() => {
                     firstCard.classList.remove('flipped');
@@ -108,5 +113,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch the words and set up the game board when the page loads
     restartButton.addEventListener('click', fetchWords);
-    fetchWords(); // Fetch words initially
+    fetchWords();
 });
