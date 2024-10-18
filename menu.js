@@ -1,5 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 const wordLists = {
+    list8: [ // New word list with short definitions
+        { english: "solo", spanish: "solo", definition: "done alone" },
+        { english: "camel", spanish: "camello", definition: "a desert animal" },
+        { english: "solid", spanish: "sólido", definition: "firm and stable" },
+        { english: "season", spanish: "estación", definition: "time of the year" },
+        { english: "habit", spanish: "hábito", definition: "a regular practice" },
+        { english: "cocoa", spanish: "cacao", definition: "a bean used to make chocolate" }
+        ],
     list7: [  // New word list with short sentences for beginners
         { english: "menu", spanish: "menú", definition: "A list of food in a restaurant.", sentence: "The menu has many options." },
         { english: "offer", spanish: "oferta", definition: "To give or provide something.", sentence: "He made an offer to help." },
