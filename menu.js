@@ -1,5 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 const wordLists = {
+    list9: [ // New list with short definitions
+        { english: "partner", spanish: "compañero", definition: "a person who shares in an activity" },
+        { english: "explore", spanish: "explorar", definition: "to travel for discovery" },
+        { english: "fabric", spanish: "tela", definition: "material made by weaving fibers" },
+        { english: "welcome", spanish: "bienvenido", definition: "a friendly greeting" },
+        { english: "arctic", spanish: "ártico", definition: "related to the North Pole" },
+        { english: "textiles", spanish: "textiles", definition: "woven fabrics" }
+        ],
     list8: [ // New word list with short definitions
         { english: "solo", spanish: "solo", definition: "done alone" },
         { english: "camel", spanish: "camello", definition: "a desert animal" },
