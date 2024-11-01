@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 const wordLists = {
+    list10: [ // New list of words with short definitions
+            { english: "completing", spanish: "completando", definition: "finishing a task" },
+            { english: "risen", spanish: "elevado", definition: "gone up or increased" },
+            { english: "excelled", spanish: "destacado", definition: "performed very well" },
+            { english: "families", spanish: "familias", definition: "groups of related individuals" },
+            { english: "donating", spanish: "donando", definition: "giving as a gift" }
+        ],
     list9: [ // New list with short definitions
         { english: "partner", spanish: "compañero", definition: "a person who shares in an activity" },
         { english: "explore", spanish: "explorar", definition: "to travel for discovery" },
