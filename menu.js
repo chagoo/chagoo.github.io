@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 const wordLists = {
+    list11: [
+            { english: "lifeguard", spanish: "salvavidas", definition: "a person who watches over swimmers" },
+            { english: "themselves", spanish: "ellos mismos", definition: "refers to a group of people performing actions on their own" },
+            { english: "however", spanish: "sin embargo", definition: "used to introduce a statement that contrasts with or contradicts the previous one" },
+            { english: "warm-blooded", spanish: "de sangre caliente", definition: "having a body temperature that is regulated internally" },
+            { english: "everlasting", spanish: "eterno", definition: "lasting forever, without end" }
+        ],
     list10: [ // New list of words with short definitions
             { english: "completing", spanish: "completando", definition: "finishing a task" },
             { english: "risen", spanish: "elevado", definition: "gone up or increased" },
