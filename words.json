@@ -1,5 +1,5 @@
-{
-    "list13": [
+[
+        { "english": "list13", "spanish": "list13" },
         { "english": "prevents", "spanish": "previene" },
         { "english": "forecast", "spanish": "pronóstico" },
         { "english": "prepaid", "spanish": "prepago" },
@@ -20,8 +20,7 @@
         { "english": "resource", "spanish": "recurso" },
         { "english": "misleading", "spanish": "engañoso" },
         { "english": "reassemble", "spanish": "reensamblar" }
-    ],
-    "list14": [
+        { "english": "list14", "spanish": "list14" },
         { "english": "subtract", "spanish": "restar" },
         { "english": "disconnect", "spanish": "desconectar" },
         { "english": "nonfiction", "spanish": "no ficción" },
@@ -43,5 +42,4 @@
         { "english": "nondairy", "spanish": "no lácteo" },
         { "english": "disappoint", "spanish": "decepcionar" }
     ]
-}
 
