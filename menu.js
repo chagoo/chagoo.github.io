@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 const wordLists = {
-    List15: [
+    list15: [
         { "english": "example", "spanish": "ejemplo", "definition": "a model or pattern to follow" },
         { "english": "incomplete", "spanish": "incompleto", "definition": "not finished or whole" },
         { "english": "enable", "spanish": "habilitar", "definition": "to make possible or allow" },
