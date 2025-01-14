@@ -1,5 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 const wordLists = {
+    List15: [
+        { "english": "example", "spanish": "ejemplo", "definition": "a model or pattern to follow" },
+        { "english": "incomplete", "spanish": "incompleto", "definition": "not finished or whole" },
+        { "english": "enable", "spanish": "habilitar", "definition": "to make possible or allow" },
+        { "english": "exact", "spanish": "exacto", "definition": "precise or correct" },
+        { "english": "enforced", "spanish": "aplicado", "definition": "made to be obeyed" },
+        { "english": "infield", "spanish": "campo interior", "definition": "the central part of a sports field" }
+    ],
     list11: [
             { english: "lifeguard", spanish: "salvavidas", definition: "a person who watches over swimmers" },
             { english: "themselves", spanish: "ellos mismos", definition: "refers to a group of people performing actions on their own" },
