@@ -1,5 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-const wordLists = {
+list17: {
+[
+    { "english": "closely", "spanish": "de cerca", "definition": "in a close manner or with attention" },
+    { "english": "delightful", "spanish": "delicioso", "definition": "giving great pleasure or happiness" },
+    { "english": "beginner", "spanish": "principiante", "definition": "someone who is just starting to learn or do something" },
+    { "english": "narrator", "spanish": "narrador", "definition": "a person who tells a story" },
+    { "english": "cheerful", "spanish": "alegre", "definition": "having a happy and positive attitude" },
+    { "english": "explorer", "spanish": "explorador", "definition": "a person who travels to unknown places" }
+],
     list15: [
         { "english": "example", "spanish": "ejemplo", "definition": "a model or pattern to follow" },
         { "english": "incomplete", "spanish": "incompleto", "definition": "not finished or whole" },
