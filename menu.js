@@ -1,5 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-list17: {
+list18: [
+        { "english": "distance", "spanish": "distancia", "definition": "the amount of space between two points" },
+        { "english": "distant", "spanish": "distante", "definition": "far away in space or time" },
+        { "english": "obedience", "spanish": "obediencia", "definition": "the act of following orders or rules" },
+        { "english": "obedient", "spanish": "obediente", "definition": "willing to follow commands or authority" },
+        { "english": "diligence", "spanish": "diligencia", "definition": "careful and persistent work or effort" },
+        { "english": "diligent", "spanish": "diligente", "definition": "showing careful and persistent effort" },
+        { "english": "importance", "spanish": "importancia", "definition": "the state or fact of being significant or valuable" },
+        { "english": "important", "spanish": "importante", "definition": "having great value or significance" }
+    ],
+    list17: 
 [
     { "english": "closely", "spanish": "de cerca", "definition": "in a close manner or with attention" },
     { "english": "delightful", "spanish": "delicioso", "definition": "giving great pleasure or happiness" },
