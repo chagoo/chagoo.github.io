@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-list18: [
+list29: [
         { "english": "distance", "spanish": "distancia", "definition": "the amount of space between two points" },
         { "english": "distant", "spanish": "distante", "definition": "far away in space or time" },
         { "english": "obedience", "spanish": "obediencia", "definition": "the act of following orders or rules" },
