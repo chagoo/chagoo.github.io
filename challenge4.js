@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    if (window.Scoreboard) {
+        Scoreboard.load();
+    }
     let words = [];
     let currentWord = null;
 
@@ -78,6 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (userSpokenWord === currentWord.english.toLowerCase()) {
                 feedback.innerText = 'Correct pronunciation! Well done!';
                 feedback.style.color = 'green';
+                if (window.Scoreboard) {
+                    Scoreboard.addScore('challenge4', 1);
+                }
             } else {
                 feedback.innerText = `Incorrect pronunciation. You said: "${userSpokenWord}". The correct word is: ${currentWord.english}`;
                 feedback.style.color = 'red';

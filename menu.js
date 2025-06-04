@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
+    if (window.Scoreboard) {
+        Scoreboard.load();
+        const achievementsDiv = document.getElementById('achievements');
+        const scores = Scoreboard.getAllScores();
+        achievementsDiv.innerHTML = '<h2>Achievements</h2>';
+        const list = document.createElement('ul');
+        Object.keys(scores).forEach(key => {
+            const li = document.createElement('li');
+            li.innerText = `${key}: ${scores[key]} points`;
+            list.appendChild(li);
+        });
+        achievementsDiv.appendChild(list);
+    }
 const wordLists = {
 list29: [
         { "english": "distance", "spanish": "distancia", "definition": "the amount of space between two points" },

@@ -8,6 +8,9 @@ if (typeof module !== 'undefined') {
 
 if (typeof document !== 'undefined') {
 document.addEventListener('DOMContentLoaded', () => {
+    if (window.Scoreboard) {
+        Scoreboard.load();
+    }
     let currentIndex = 0;
     let words = []; // This will hold the fetched word list
 
@@ -100,10 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const userInput = currentCard.querySelector('.word-input').value.trim().toLowerCase();
             const correctAnswer = words[currentIndex].english.toLowerCase();
 
-            if (userInput === correctAnswer) {
-                feedback.innerText = 'Correct! Great job!';
-                feedback.style.color = 'green';
-            } else {
+           if (userInput === correctAnswer) {
+               feedback.innerText = 'Correct! Great job!';
+               feedback.style.color = 'green';
+                if (window.Scoreboard) {
+                    Scoreboard.addScore('challenge2', 1);
+                }
+           } else {
                 feedback.innerText = 'Incorrect. Try again!';
                 feedback.style.color = 'red';
             }

@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    if (window.Scoreboard) {
+        Scoreboard.load();
+    }
     const carousel = document.getElementById('carousel');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');

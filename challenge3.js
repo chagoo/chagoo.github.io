@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    if (window.Scoreboard) {
+        Scoreboard.load();
+    }
     let words = []; // This will hold the fetched word list
     let currentWord = null;
     let score = 0;
@@ -112,6 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (userTranslation === currentWord.english.toLowerCase()) {
             feedback.innerText = 'Correct!';
             score++;
+            if (window.Scoreboard) {
+                Scoreboard.addScore('challenge3', 1);
+            }
             updateUI();
             loadNextWord();
         } else {
