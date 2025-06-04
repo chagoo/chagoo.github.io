@@ -10,6 +10,20 @@ const words = [
     { english: 'result', spanish: 'resultado', definition: 'The outcome or consequence of an action or event' },
     { english: 'volume', spanish: 'volumen', definition: 'The amount of space something occupies or the amount of sound' },
     { english: 'exist', spanish: 'existir', definition: 'To have actual being or reality' },
+    { english: 'canvas', spanish: 'lienzo', definition: 'A strong, heavy cloth used for painting or other artistic work' },
+    { english: 'event', spanish: 'evento', definition: 'A significant occurrence or happening' },
+    { english: 'modern', spanish: 'moderno', definition: 'Relating to the present or recent times' },
+    { english: 'method', spanish: 'método', definition: 'A particular way of doing something' },
+    { english: 'fragment', spanish: 'fragmento', definition: 'A small part broken off or separated from something' },
+    { english: 'success', spanish: 'éxito', definition: 'The accomplishment of an aim or purpose' },
+    { english: 'adopt', spanish: 'adoptar', definition: "To legally take another's child and bring it up as one's own" },
+    { english: 'relax', spanish: 'relajarse', definition: 'To become less tense or anxious' },
+    { english: 'custom', spanish: 'costumbre', definition: 'A traditional and widely accepted practice or behavior' },
+    { english: 'deliver', spanish: 'entregar', definition: 'To bring and hand over something to the intended recipient' },
+    { english: 'expand', spanish: 'expandir', definition: 'To become larger or more extensive' },
+    { english: 'convince', spanish: 'convencer', definition: 'To cause someone to believe firmly in the truth of something' },
+    { english: 'camera', spanish: 'cámara', definition: 'A device for recording images or video' },
+    { english: 'shepherd', spanish: 'pastor', definition: 'A person who tends and rears sheep' }
  
 ];
 
