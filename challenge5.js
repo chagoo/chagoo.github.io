@@ -1,4 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => { 
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+if (typeof module !== 'undefined') {
+    module.exports = shuffle;
+}
+
+if (typeof document !== 'undefined') {
+document.addEventListener('DOMContentLoaded', () => {
     let shuffledCards = [];
     let firstCard = null;
     let secondCard = null;
@@ -22,12 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error fetching words:', error));
     }
 
-    function shuffle(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-    }
+
 
     function createCard(word, language, pair) {
         const card = document.createElement('div');
@@ -138,3 +146,4 @@ document.addEventListener('DOMContentLoaded', () => {
     restartButton.addEventListener('click', fetchWords);
     fetchWords();
 });
+}
