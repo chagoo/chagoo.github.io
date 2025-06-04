@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+const wordLists = {
 list29: [
         { "english": "distance", "spanish": "distancia", "definition": "the amount of space between two points" },
         { "english": "distant", "spanish": "distante", "definition": "far away in space or time" },
