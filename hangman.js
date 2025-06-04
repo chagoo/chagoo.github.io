@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    if (window.Scoreboard) {
+        Scoreboard.load();
+    }
     const words = ['awesome'];
     let selectedWord;
     let guessedLetters = [];
@@ -31,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (!display.includes('_')) {
             message.textContent = 'You Win!';
+            if (window.Scoreboard) {
+                Scoreboard.addScore('hangman', 1);
+            }
             disableButtons();
         }
     }

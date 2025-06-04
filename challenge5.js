@@ -12,6 +12,9 @@ if (typeof module !== 'undefined') {
 
 if (typeof document !== 'undefined') {
 document.addEventListener('DOMContentLoaded', () => {
+    if (window.Scoreboard) {
+        Scoreboard.load();
+    }
     let shuffledCards = [];
     let firstCard = null;
     let secondCard = null;
@@ -97,6 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Apply explosion effect on both cards when matched
                 firstCard.classList.add('matched');
                 secondCard.classList.add('matched');
+                if (window.Scoreboard) {
+                    Scoreboard.addScore('challenge5', 1);
+                }
                 
                 // Remove the cards from the board after the animation
                 setTimeout(() => {

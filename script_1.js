@@ -28,6 +28,9 @@ const words = [
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
+    if (window.Scoreboard) {
+        Scoreboard.load();
+    }
     const wordContainer = document.getElementById('word-container');
     const translationContainer = document.getElementById('translation-container');
     const feedback = document.getElementById('feedback');
@@ -110,6 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function incrementScore() {
         score++;
         scoreElement.innerText = `Score: ${score}`;
+        if (window.Scoreboard) {
+            Scoreboard.addScore('matching', 1);
+        }
     }
 
     function markCorrectMatch() {
