@@ -50,7 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle letter guesses
     function guessLetter(letter) {
         guessedLetters.push(letter);
-        document.querySelector(`button:contains(${letter})`).disabled = true;
+        const buttons = lettersContainer.querySelectorAll('button');
+        buttons.forEach(btn => {
+            if (btn.textContent === letter) {
+                btn.disabled = true;
+            }
+        });
 
         if (selectedWord.includes(letter)) {
             displayWord();
