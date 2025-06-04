@@ -101,7 +101,8 @@ list29: [
     const closeModal = document.querySelector('.close');
     const wordListContainer = document.getElementById('word-list');
     const startGameButton = document.getElementById('start-game');
-    const startChallenge3Button = document.getElementById('start-challenge3'); // New button for Challenge 3
+    // Link for Challenge 3
+    const challenge3Link = document.getElementById('challenge3-link');
 
     // Event listener to display selected word list in the modal
     studyWordsButton.onclick = () => {
@@ -140,7 +141,7 @@ list29: [
     };
 
     // Event listener for Challenge 3
-    startChallenge3Button.onclick = () => {
+    challenge3Link.onclick = () => {
         const selectedList = wordListSelect.value;
         localStorage.setItem('selectedWordList', JSON.stringify(wordLists[selectedList]));
         window.location.href = 'challenge3.html'; // Redirect to Challenge 3
