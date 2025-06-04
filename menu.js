@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-list29: [
+const wordLists = {
+    list29: [
         { "english": "distance", "spanish": "distancia", "definition": "the amount of space between two points" },
         { "english": "distant", "spanish": "distante", "definition": "far away in space or time" },
         { "english": "obedience", "spanish": "obediencia", "definition": "the act of following orders or rules" },
@@ -101,7 +102,8 @@ list29: [
     const closeModal = document.querySelector('.close');
     const wordListContainer = document.getElementById('word-list');
     const startGameButton = document.getElementById('start-game');
-    const startChallenge3Button = document.getElementById('start-challenge3'); // New button for Challenge 3
+    // Link to launch Challenge 3 using the selected word list
+    const startChallenge3Button = document.getElementById('challenge3-link');
 
     // Event listener to display selected word list in the modal
     studyWordsButton.onclick = () => {
