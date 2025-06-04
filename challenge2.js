@@ -1,3 +1,12 @@
+function createIncompleteWord(word) {
+    return word.split('').map(char => (Math.random() > 0.5 ? '_' : char)).join('');
+}
+
+if (typeof module !== 'undefined') {
+    module.exports = { createIncompleteWord };
+}
+
+if (typeof document !== 'undefined') {
 document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     let words = []; // This will hold the fetched word list
@@ -22,10 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         speechSynthesis.speak(utterance);
     }
 
-    // Function to create an incomplete word by replacing random characters with '_'
-    function createIncompleteWord(word) {
-        return word.split('').map(char => (Math.random() > 0.5 ? '_' : char)).join('');
-    }
+
 
     // Function to create word cards and add them to the carousel
     function createWordCards() {
@@ -129,3 +135,4 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Error loading word list:', error));
 });
+}

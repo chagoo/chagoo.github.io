@@ -11,4 +11,5 @@ npm install
 npm test
 ```
 
-The tests are located under the `tests/` directory.
+The tests are located under the `tests/` directory and cover helper functions
+from the various challenge scripts such as `createIncompleteWord` and `shuffle`.
