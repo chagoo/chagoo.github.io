@@ -73,7 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const randomIndex = Math.floor(Math.random() * words.length);
         currentWord = words[randomIndex];
+        wordDisplay.classList.remove('fade-in');
+        void wordDisplay.offsetWidth;
         wordDisplay.innerText = currentWord.spanish; // Display the word in Spanish
+        wordDisplay.classList.add('fade-in');
         translationInput.value = '';
         timeLeft = 25; // Reset the timer
     }
