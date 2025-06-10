@@ -182,22 +182,3 @@ h1 {
     background-color: #555; /* Darken button on hover */
 }
 
-/* Highlighting for the matching game */
-.word, .translation {
-    display: inline-block;
-    margin: 5px;
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.word.selected, .translation.selected {
-    background-color: #ffff99; /* Highlight selected pair */
-}
-
-.word.correct, .translation.correct {
-    background-color: #c8e6c9; /* Indicate a correct match */
-    border-color: #a5d6a7;
-    cursor: default;
-}
