@@ -28,21 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
     listInfo.innerHTML = `List: <strong>${listName}</strong> Number of words: <strong>0</strong>`;
 
     // Fetch word list from JSON file
-    fetch('words.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            words = data;
-            listInfo.innerHTML = `List: <strong>${listName}</strong> Number of words: <strong>${words.length}</strong>`;
-        })
-        .catch(error => {
-            console.error('Error loading word list:', error);
-            feedback.innerText = 'Error loading words. Please try again later.';
-        });
+    if (window.WordUtils) {
+        WordUtils.fetchWords()
+            .then(data => {
+                words = data;
+                listInfo.innerHTML = `List: <strong>${listName}</strong> Number of words: <strong>${words.length}</strong>`;
+            })
+            .catch(error => {
+                console.error('Error loading word list:', error);
+                feedback.innerText = 'Error loading words. Please try again later.';
+            });
+    }
 
     function startGame() {
         if (gameRunning || words.length === 0) return; // Prevent starting game again if already running or if no words
