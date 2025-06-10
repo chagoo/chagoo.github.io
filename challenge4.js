@@ -32,7 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (words.length > 0) {
             const randomIndex = Math.floor(Math.random() * words.length);
             currentWord = words[randomIndex];
+            spanishWordElem.classList.remove('fade-in');
+            void spanishWordElem.offsetWidth;
             spanishWordElem.innerText = currentWord.spanish;
+            spanishWordElem.classList.add('fade-in');
             feedback.innerText = '';
             submitButton.disabled = false;  // Re-enable the button in case it was disabled
         }
