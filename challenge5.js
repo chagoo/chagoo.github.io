@@ -30,12 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to fetch and use words from words.json
     function fetchWords() {
-        fetch('words.json')
-            .then(response => response.json())
-            .then(words => {
-                setupBoard(words, currentPage);
-            })
-            .catch(error => console.error('Error fetching words:', error));
+        if (window.WordUtils) {
+            WordUtils.fetchWords()
+                .then(words => {
+                    setupBoard(words, currentPage);
+                })
+                .catch(error => console.error('Error fetching words:', error));
+        }
     }
 
 

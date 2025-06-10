@@ -11,25 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetButton = document.getElementById('reset-game');
 
     // Fetch word list from JSON file
-    fetch('words.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            words = data;
-            loadNewWord();
-        })
-        .catch(error => {
-            console.error('Error loading word list:', error);
-            // Display error message to the user
-            spanishWordElem.innerText = 'Error loading words. Please try again later.';
-            feedback.innerText = 'We encountered a problem loading the word list.';
-            feedback.style.color = 'red';
-            submitButton.disabled = true;  // Disable submit button
-        });
+    if (window.WordUtils) {
+        WordUtils.fetchWords()
+            .then(data => {
+                words = data;
+                loadNewWord();
+            })
+            .catch(error => {
+                console.error('Error loading word list:', error);
+                // Display error message to the user
+                spanishWordElem.innerText = 'Error loading words. Please try again later.';
+                feedback.innerText = 'We encountered a problem loading the word list.';
+                feedback.style.color = 'red';
+                submitButton.disabled = true;  // Disable submit button
+            });
+    }
 
     // Load a new word
     function loadNewWord() {
